@@ -7,7 +7,7 @@ from PyQt5.QtWidgets import (QApplication, QMainWindow, QPushButton, QLabel,
                             QMessageBox, QFrame)
 from PyQt5.QtCore import Qt, QThread, pyqtSignal, QDateTime
 from PyQt5.QtGui import QIcon, QFont  # 已包含QIcon导入
-
+current_directory = os.path.dirname(os.path.abspath(__file__))  
 class UpdateThread(QThread):
     # 保持不变...
     """更新hosts的后台线程，避免界面卡顿"""
@@ -151,7 +151,7 @@ class FastGithubGUI(QMainWindow):
         # 窗口设置
         self.setWindowTitle("FastGithub")
         # 添加窗口图标（关键修改）
-        self.setWindowIcon(QIcon("app.ico"))  # 使用当前目录下的app.ico作为图标
+        self.setWindowIcon(QIcon(current_directory+"/app.ico"))  # 使用当前目录下的app.ico作为图标
         self.setFixedSize(600, 450)
         self.setStyleSheet("""
             QMainWindow {
